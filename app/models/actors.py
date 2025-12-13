@@ -13,7 +13,7 @@ class ActorModel(Base):
 
    id: Mapped[int] = mapped_column(primary_key=True)
    name: Mapped[str] = mapped_column(String(255), nullable=False)
-   date: Mapped[date] = mapped_column(Date, nullable=False)
+   date: Mapped[date] = mapped_column(date, nullable=False)
    description: Mapped[str] = mapped_column(String(2000), nullable=True)
    image_url: Mapped[str] = mapped_column(String(500), nullable=True)
 
