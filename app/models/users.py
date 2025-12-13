@@ -1,12 +1,14 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Float, ForeignKey
+from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.database import Base
 
 if TYPE_CHECKING:
     from app.models.roles import RoleModel
-
+    from app.models.favourites import FavouriteModel
+    from app.models.reviews import ReviewModel
+    
 
 class UserModel(Base):
     __tablename__ = "users"
@@ -15,5 +17,7 @@ class UserModel(Base):
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     hashed_password: Mapped[str] = mapped_column(String(200), nullable=False)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), nullable=False)
-    
-    role: Mapped["RoleModel"] = relationship(back_populates="users")
+
+    roles: Mapped["RoleModel"] = relationship(back_populates="users")
+    favourites: Mapped[list["FavouriteModel"]] = relationship(back_populates="user")
+    reviews: Mapped[list["ReviewModel"]] = relationship(back_populates="user")
