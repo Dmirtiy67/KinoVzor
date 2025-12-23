@@ -1,32 +1,30 @@
 from fastapi import APIRouter
-
 from app.api.dependencies import DBDep, IsAdminDep
 from app.schemes.reviews import SReviewAdd, SReviewGet
 from app.services.reviews import ReviewService
-from app.exceptions.reviews import ReviewNotFoundError, ReviewNotFoundHTTPError
+from app.exceptions.reviews import ReviewNotFoundHTTPError, ReviewAlreadyExistsHTTPError
 
 router = APIRouter(prefix="/reviews", tags=["Отзывы"])
 
 
-@router.get("/film/{film_id}")
-async def get_reviews(film_id: int, db: DBDep) -> list[SReviewGet]:
-    return await ReviewService(db).get_reviews_by_film(film_id)
-
-
-@router.post("/")
-async def create_review(review_data: SReviewAdd, db: DBDep):
-    await ReviewService(db).create_review(review_data)
-    return {"status": "OK"}
-
-
-@router.delete("/{review_id}")
-async def delete_review(
-    review_id: int,
-    db: DBDep,
-    is_admin: IsAdminDep,
-):
+@router.post("/", summary="Добавление отзыва")
+async def add_review(review_data: SReviewAdd, db: DBDep):
     try:
-        await ReviewService(db).delete_review(review_id)
-    except ReviewNotFoundError:
-        raise ReviewNotFoundHTTPError
+        await ReviewService(db).add_review(review_data)
+    except ReviewAlreadyExistsHTTPError:
+        raise ReviewAlreadyExistsHTTPError()
     return {"status": "OK"}
+
+
+@router.get("/", summary="Список всех отзывов")
+async def get_reviews(db: DBDep):
+    return await ReviewService(db).get_all_reviews()
+
+
+@router.get("/{review_id}", summary="Получение конкретного отзыва")
+async def get_review(review_id: int, db: DBDep):
+    review = await ReviewService(db).get_review(review_id)
+    if not review:
+        raise ReviewNotFoundHTTPError()
+    return review
+
