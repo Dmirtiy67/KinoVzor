@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 
 class ReviewModel(Base):
-    tablename = "reviews"
+    __tablename__ = "reviews"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     film_id: Mapped[int] = mapped_column(

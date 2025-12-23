@@ -16,5 +16,5 @@ class ActorInFilmModel(Base):
     film_id: Mapped[int] = mapped_column(ForeignKey("films.id", ondelete="CASCADE"), nullable=False)
     actor_id: Mapped[int] = mapped_column(ForeignKey("actor.id", ondelete="CASCADE"), nullable=False)
 
-    films: Mapped["FilmModel"] = relationship(back_populates="actors_in_films")
-    actors: Mapped["ActorModel"] = relationship(back_populates="actors_in_films")
+    film: Mapped["FilmModel"] = relationship(back_populates="actors_in_films")
+    actor: Mapped["ActorModel"] = relationship(back_populates="actors_in_films")

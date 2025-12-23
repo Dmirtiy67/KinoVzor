@@ -19,5 +19,5 @@ class UserModel(Base):
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), nullable=False)
 
     roles: Mapped["RoleModel"] = relationship(back_populates="users")
-    favourites: Mapped[list["FavouriteModel"]] = relationship(back_populates="user")
-    reviews: Mapped[list["ReviewModel"]] = relationship(back_populates="user")
+    favourites: Mapped[list["FavouriteModel"]] = relationship(back_populates="user", cascade="all, delete")
+    reviews: Mapped[list["ReviewModel"]] = relationship(back_populates="user", cascade="all, delete")

@@ -19,6 +19,6 @@ class FilmModel(Base):
    description: Mapped[str] = mapped_column(String(2000), nullable=True)
    video_url: Mapped[str] = mapped_column(String(500), nullable=True)
 
-   actors_in_films: Mapped[list["ActorInFilmModel"]] = relationship(back_populates="film")
-   favourites: Mapped[list["FavouriteModel"]] = relationship(back_populates="film")
-   reviews: Mapped[list["ReviewModel"]] = relationship(back_populates="film")
+   actors_in_films: Mapped[list["ActorInFilmModel"]] = relationship(back_populates="film", cascade="all, delete")
+   favourites: Mapped[list["FavouriteModel"]] = relationship(back_populates="film", cascade="all, delete")
+   reviews: Mapped[list["ReviewModel"]] = relationship(back_populates="film", cascade="all, delete")

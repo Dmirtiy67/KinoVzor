@@ -17,5 +17,5 @@ class ActorModel(Base):
    description: Mapped[str] = mapped_column(String(2000), nullable=True)
    image_url: Mapped[str] = mapped_column(String(500), nullable=True)
 
-   actors_in_films: Mapped[list["ActorInFilmModel"]] = relationship(back_populates="actor")
+   actors_in_films: Mapped[list["ActorInFilmModel"]] = relationship(back_populates="actor", cascade="all, delete")
 
