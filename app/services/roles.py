@@ -26,7 +26,7 @@ class RoleService(BaseService):
         role: SRoleGetWithRels | None = await self.db.roles.get_one_or_none(id=role_id)
         if not role:
             raise RoleNotFoundError
-        await self.db.roles.edit(role_data)
+        await self.db.roles.edit(role_data, id=role_id)
         await self.db.commit()
         return
 

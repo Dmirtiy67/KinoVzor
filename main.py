@@ -6,6 +6,14 @@ from app.api.sample import router as sample_router
 from app.api.auth import router as auth_router
 from app.api.roles import router as role_router
 from app.api.web import router as web_router
+from app.api.films import router as film_router
+from app.api.actors import router as actor_router
+from app.api.actors_in_films import router as actor_in_film_router
+from app.api.reviews import router as review_router
+from app.api.favourites import router as favourite_router
+from app.api.users import router as user_router
+
+
 
 app = FastAPI(title="individual_project_template", version="0.0.1")
 
@@ -14,6 +22,12 @@ app.include_router(sample_router)
 app.include_router(auth_router)
 app.include_router(role_router)
 app.include_router(web_router)
+app.include_router(films_router)
+app.include_router(actors_router)
+app.include_router(actors_in_films_router)
+app.include_router(reviews_router)
+app.include_router(favourites_router)
+app.include_router(users_router)
 
 if __name__ == "__main__":
     uvicorn.run(app=app)
