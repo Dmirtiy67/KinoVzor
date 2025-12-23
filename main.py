@@ -12,6 +12,7 @@ from app.api.actors_in_films import router as actor_in_film_router
 from app.api.reviews import router as review_router
 from app.api.favourites import router as favourite_router
 from app.api.users import router as user_router
+from app.api.admin import router as admin_router
 
 
 
@@ -28,6 +29,7 @@ app.include_router(actors_in_films_router)
 app.include_router(reviews_router)
 app.include_router(favourites_router)
 app.include_router(users_router)
+app.include_router(admin_router)
 
 if __name__ == "__main__":
     uvicorn.run(app=app)

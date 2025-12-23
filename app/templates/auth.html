@@ -3,140 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScooterRent - Вход и регистрация</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>КиноВзор — Вход / Регистрация</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Логотип и заголовок -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-scooter"></i>
-                <h1>Scooter<span>Rent</span></h1>
-            </div>
-            <p class="tagline">Аренда электросамокатов в вашем городе</p>
-        </header>
+    <header>
+        <div class="logo">🎬</div>
+        <h1>КиноВзор лучший сайт для просмотра фильмов</h1>
+    </header>
 
-        <!-- Основной контент - только формы -->
-        <main class="auth-container">
-            <div class="forms-wrapper">
-                <!-- Форма входа -->
-                <div class="form-section" id="login-form">
-                    <div class="form-header">
-                        <h2><i class="fas fa-sign-in-alt"></i> Вход в аккаунт</h2>
-                        <p class="form-subtitle">Войдите, чтобы арендовать самокаты</p>
-                    </div>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="loginEmail" placeholder="user@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword"><i class="fas fa-lock"></i> Пароль</label>
-                            <input type="password" id="loginPassword" placeholder="••••••••" required>
-                            <div class="password-hint">Минимум 6 символов</div>
-                        </div>
-                        <button type="submit" class="btn-submit">
-                            <span>Войти</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <div class="form-footer">
-                            <p>Нет аккаунта? <a href="#" class="switch-form" data-target="register">Зарегистрироваться</a></p>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Форма регистрации -->
-                <div class="form-section hidden" id="register-form">
-                    <div class="form-header">
-                        <h2><i class="fas fa-user-plus"></i> Регистрация</h2>
-                        <p class="form-subtitle">Создайте аккаунт для аренды самокатов</p>
-                    </div>
-                    <form id="registerForm">
-                        <div class="form-group">
-                            <label for="registerName"><i class="fas fa-user"></i> Имя</label>
-                            <input type="text" id="registerName" placeholder="Введите ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="registerEmail"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="registerEmail" placeholder="user@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="registerPassword"><i class="fas fa-lock"></i> Пароль</label>
-                            <input type="password" id="registerPassword" placeholder="••••••••" required>
-                            <div class="password-hint">Минимум 6 символов</div>
-                        </div>
-                        <button type="submit" class="btn-submit">
-                            <span>Зарегистрироваться</span>
-                            <i class="fas fa-user-check"></i>
-                        </button>
-                        <div class="form-footer">
-                            <p>Уже есть аккаунт? <a href="#" class="switch-form" data-target="login">Войти</a></p>
-                        </div>
-                    </form>
-                </div>
+    <main>
+        <section class="auth-section">
+            <div class="login-form">
+                <h2>Вход</h2>
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Пароль">
+                <button onclick="loginUser()">Войти</button>
             </div>
 
-            <!-- Блок преимуществ -->
-            <div class="benefits-section">
-                <h3><i class="fas fa-medal"></i> Почему выбирают нас?</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h4>Быстрая аренда</h4>
-                        <p>Арендуйте самокат за 1 минуту через приложение</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h4>1000+ самокатов</h4>
-                        <p>Большая сеть самокатов по всему городу</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h4>Безопасность</h4>
-                        <p>Все самокаты застрахованы и регулярно обслуживаются</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-piggy-bank"></i>
-                        </div>
-                        <h4>Экономия</h4>
-                        <p>Скидки до 30% для постоянных клиентов</p>
-                    </div>
-                </div>
-
-                <div class="cta-section">
-                    <div class="scooter-animation">
-                        <i class="fas fa-scooter"></i>
-                    </div>
-                    <h4>Присоединяйтесь к тысячам довольных клиентов!</h4>
-                    <p>Арендуйте самокаты уже сегодня</p>
-                </div>
+            <div class="register-form">
+                <h2>Регистрация</h2>
+                <input type="text" id="reg-name" placeholder="Имя">
+                <input type="email" id="reg-email" placeholder="Email">
+                <input type="password" id="reg-password" placeholder="Пароль">
+                <button onclick="registerUser()">Зарегистрироваться</button>
             </div>
-        </main>
+        </section>
+    </main>
 
-        <!-- Уведомления -->
-        <div id="notification" class="notification hidden"></div>
-
-        <!-- Футер -->
-        <footer class="footer">
-            <p>© 2024 ScooterRent. Все права защищены.</p>
-            <div class="footer-links">
-                <a href="#"><i class="fas fa-question-circle"></i> Помощь</a>
-                <a href="#"><i class="fas fa-file-contract"></i> Условия</a>
-                <a href="#"><i class="fas fa-shield-alt"></i> Конфиденциальность</a>
-            </div>
-        </footer>
-    </div>
-
-    <script src="/static/js/auth.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
