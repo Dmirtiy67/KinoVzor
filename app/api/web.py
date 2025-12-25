@@ -1,17 +1,15 @@
 from fastapi import APIRouter, Request
-
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+router = APIRouter()
 
-router = APIRouter(prefix="/web", tags=["Фронтенд"])
-templates = Jinja2Templates(directory="app/templates")
-
-
-@router.get("/auth")
-async def get_registration_html(request: Request):
-    return templates.TemplateResponse(name="auth.html", context={"request": request})
+templates = Jinja2Templates(directory="templates")
 
 
-@router.get("/")
-async def get_index_html(request: Request):
-    return templates.TemplateResponse(name="index.html", context={"request": request})
+@router.get("/", response_class=HTMLResponse)
+def index(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )

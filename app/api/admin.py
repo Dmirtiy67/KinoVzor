@@ -27,7 +27,7 @@ async def create_admin(db: DBDep):
     hashed_password = AuthService.hash_password("admin123")
     admin_user_data = SUserAdd(
         name="Legasy",
-        email="dim047711@gmail.com",
+        email="admin@example.com",
         hashed_password=hashed_password,
         role_id=admin_role.id
     )
